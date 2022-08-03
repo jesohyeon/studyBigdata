@@ -85,21 +85,19 @@ def main():
     (jsonResult, result, natName, ed, dataEND) =\
     getTourismStatsService(nat_cd, ed_cd, nStartYear, nEndYear)
 
-    if (natName=='') : #URL 요청은 성공하였지만, 데이터 제공이 안된 경우
+    if natName=='' : #URL 요청은 성공하였지만, 데이터 제공이 안된 경우
         print('데이터가 전달되지 않았습니다. 공공데이터포털의 서비스 상태를 확인하기 바랍니다.')
     else:
-        pass
-    # #파일저장 1 : json 파일       
+    #파일저장 1 : csv 파일   
+        columns = ["입국자국가", "국가코드", "입국연월", "입국자 수"]
+        result_df = pd.DataFrame(result, columns = columns)
+        result_df.to_csv(f'./{natName}_{ed}_{nStartYear}_{dataEND}.csv', index=False, encoding='cp949')
+
+    # #파일저장 2 : json 파일       
     # with open('./%s_%s_%d_%s.json' % (natName, ed, nStartYear, dataEND), 'w', 
     #             encoding='utf8') as outfile:
     #     jsonFile  = json.dumps(jsonResult, indent=4, sort_keys=True, ensure_ascii=False)
     #     outfile.write(jsonFile)
-    # #파일저장 2 : csv 파일   
-    # columns = ["입국자국가", "국가코드", "입국연월", "입국자 수"]
-    # result_df = pd.DataFrame(result, columns = columns)
-    # result_df.to_csv('./%s_%s_%d_%s.csv' % (natName, ed, nStartYear, dataEND),
-    #             index=False, encoding='cp949')
-
 
 if __name__ == '__main__':
     main()
