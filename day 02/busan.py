@@ -32,7 +32,7 @@ def getRequestUrl(url):
 def getGalmatgiInfo():
     service_url = 'http://apis.data.go.kr/6260000/fbusangmgcourseinfo/getgmgcourseinfo'
     params = f'?serviceKey={ServiceKey}'  #?한번만 뒤에 다 &
-    params += f'&numOfRows=10'
+    params += f'&numOfRows=10'  #한번에 볼수있는 페이지 수
     params += f'&pageNo=1'
     params += f'&resultType=json'
     url = service_url + params
