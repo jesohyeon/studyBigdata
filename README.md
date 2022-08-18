@@ -47,3 +47,4 @@
 - PyQt5 학습
   - qtDesigner로 UI생성
   - 네이버 API로 네이버뉴스, 영화 검색앱 만들기
+
